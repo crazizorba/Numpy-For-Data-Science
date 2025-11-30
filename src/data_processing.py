@@ -2,8 +2,8 @@ import numpy as np
 
 def load_data(path="../data/raw/BankChurners.csv"):
     """
-    Load dữ liệu và trả về các mảng đã xử lý sơ bộ (chỉ dùng NumPy)
-    Trả về: X_num, X_cat, y, feature_names
+    Load data and return pre-processed arrays
+    Return: X_num, X_cat, y, feature_names
     """
     raw = np.genfromtxt(path, delimiter=',', dtype=str, encoding='utf-8', skip_header=1)
     raw = np.char.strip(raw, '"')
@@ -63,9 +63,9 @@ def one_hot_encode(X_cat, cat_names):
 
 def handle_outliers(X_num, method="clip_iqr"):
     """
-    Xử lý outlier trong numerical data.
+    Handling outliers in numerical data.
     - method: "clip_iqr" (clip to 1.5 IQR bounds)
-    - Ý nghĩa: Giảm ảnh hưởng outlier mà không mất data.
+    - Purpose: Reduce outlier effects without losing data.
     """
     q1 = np.percentile(X_num, 25, axis=0)
     q3 = np.percentile(X_num, 75, axis=0)

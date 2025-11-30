@@ -1,4 +1,3 @@
-# src/models.py
 import numpy as np
 
 class LogisticRegression:
@@ -38,7 +37,7 @@ class LogisticRegression:
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
 
-            # Calculate loss (cross-entropy + L2 reg)
+            # Calculate loss
             loss = - (1 / n_samples) * np.sum(y * np.log(predictions + 1e-8) + (1 - y) * np.log(1 - predictions + 1e-8)) + (self.lambda_reg / (2 * n_samples)) * np.sum(self.weights**2)
             self.losses.append(loss)
 
